@@ -1,3 +1,5 @@
+#[allow(dead_code)]
+
 use super::Subscriber;
 use super::Event;
 
@@ -21,6 +23,13 @@ impl<T> EventBus<T> {
     pub fn publish(&mut self, message: Event<T>) {
         self.messages.push(message);
     }
+
+    pub fn clear(&mut self) {
+        self.messages.clear();
+    }
+
+
+    /* Upon run, messages will be cleared! */
 
     pub fn run(&mut self) {
         for message in self.messages.drain(..) {
