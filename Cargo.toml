@@ -1,11 +1,11 @@
 [package]
 name = "simple_event_bus"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 description = "A basic, simple event bus in Rust"
 readme = "readme.md"
 keywords = ["small", "performance", "event-bus"]
-categories = ["event-bus", "small", "lightweight"]
+categories = ["game-development", "data-structures"]
 license = "MIT"
 repository = "https://github.com/dimitribobkov/Simple-Event-Bus"
 documentation = "https://docs.rs/simple_event_bus"
