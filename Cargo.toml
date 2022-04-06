@@ -2,7 +2,13 @@
 name = "simple_event_bus"
 version = "0.0.1"
 edition = "2021"
-
+description = ""
+readme = "readme.md"
+keywords = ["small", "performance", "event-bus"]
+categories = ["asynchronous", "web-programming", "network-programming"]
+license = "MIT"
+repository = "https://github.com/dimitribobkov/Simple-Event-Bus"
+documentation = "https://docs.rs/simple_event_bus"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
