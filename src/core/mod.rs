@@ -1,7 +1,7 @@
-mod subscriber;
 mod event;
 mod event_bus;
+mod subscriber;
 
-pub use subscriber::Subscriber;
 pub use event::Event;
 pub use event_bus::EventBus;
+pub use subscriber::Subscriber;

@@ -1,7 +1,7 @@
-#[allow(dead_code)]
+#![allow(dead_code)]
 
-use super::Subscriber;
 use super::Event;
+use super::Subscriber;
 
 pub struct EventBus<T> {
     pub messages: Vec<Event<T>>,
@@ -27,7 +27,6 @@ impl<T> EventBus<T> {
     pub fn clear(&mut self) {
         self.messages.clear();
     }
-
 
     /* Upon run, messages will be cleared! */
 
