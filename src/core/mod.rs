@@ -1,7 +1,7 @@
-mod listener;
-mod message;
-mod message_queue;
+mod subscriber;
+mod event;
+mod event_bus;
 
-pub use listener::Listener;
-pub use message::Message;
-pub use message_queue::MessageQueue;
+pub use subscriber::Subscriber;
+pub use event::Event;
+pub use event_bus::EventBus;

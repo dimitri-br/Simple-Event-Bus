@@ -1,5 +1,5 @@
 mod core;
 
-pub use crate::core::Listener;
-pub use crate::core::Message;
-pub use crate::core::MessageQueue;
+pub use crate::core::Subscriber;
+pub use crate::core::Event;
+pub use crate::core::EventBus;

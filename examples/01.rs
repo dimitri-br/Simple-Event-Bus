@@ -1,12 +1,3 @@
-# Simple Event Bus
-
-Minimal event bus in rust.
-It provides a basic event bus system that works with (probably) any type.
-
-
-Example Usage:
-
-```rust
 use simple_event_bus::{Event, EventBus, Subscriber};
 
 struct ExampleSubscriber{
@@ -39,4 +30,3 @@ fn main(){
     
     message_queue.run();
 }
-```
