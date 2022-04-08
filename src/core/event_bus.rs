@@ -4,14 +4,14 @@ use super::Event;
 use super::Subscriber;
 
 pub struct EventBus<T> {
-    pub messages: Vec<Event<T>>,
+    pub events: Vec<Event<T>>,
     pub listeners: Vec<Box<dyn Subscriber<Input = T>>>,
 }
 
 impl<T> EventBus<T> {
     pub fn new() -> EventBus<T> {
         EventBus {
-            messages: Vec::new(),
+            events: Vec::new(),
             listeners: Vec::new(),
         }
     }
@@ -21,19 +21,19 @@ impl<T> EventBus<T> {
     }
 
     pub fn publish(&mut self, message: Event<T>) {
-        self.messages.push(message);
+        self.events.push(message);
     }
 
     pub fn clear(&mut self) {
-        self.messages.clear();
+        self.events.clear();
     }
 
     /* Upon run, messages will be cleared! */
 
     pub fn run(&mut self) {
-        for message in self.messages.drain(..) {
+        for message in self.events.drain(..) {
             for listener in self.listeners.iter_mut() {
-                listener.on_message(&message);
+                listener.on_event(&message);
             }
         }
     }

@@ -6,14 +6,14 @@ struct ExampleSubscriber {
 
 impl ExampleSubscriber {
     pub fn new(name: String) -> ExampleSubscriber {
-        ExampleSubscriber { name: name }
+        ExampleSubscriber { name }
     }
 }
 
 impl Subscriber for ExampleSubscriber {
     type Input = String;
 
-    fn on_message(&mut self, message: &Event<Self::Input>) {
+    fn on_event(&mut self, message: &Event<Self::Input>) {
         println!("{} received message: {}", self.name, message.get_data());
     }
 }
@@ -26,5 +26,6 @@ fn main() {
     message_queue.publish(Event::new("hello".to_string()));
     message_queue.publish(Event::new("world".to_string()));
 
+    // Runs through each event, and calls each listener's on_event method.
     message_queue.run();
 }
