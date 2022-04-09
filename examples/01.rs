@@ -13,19 +13,19 @@ impl ExampleSubscriber {
 impl Subscriber for ExampleSubscriber {
     type Input = String;
 
-    fn on_event(&mut self, message: &Event<Self::Input>) {
-        println!("{} received message: {}", self.name, message.get_data());
+    fn on_event(&mut self, event: &Event<Self::Input>) {
+        println!("{} received message: {}", self.name, event.get_data());
     }
 }
 
 fn main() {
-    let mut message_queue = EventBus::new();
-    message_queue.subscribe_listener(Box::new(ExampleSubscriber::new("listener 1".to_string())));
-    message_queue.subscribe_listener(Box::new(ExampleSubscriber::new("listener 2".to_string())));
+    let mut event_bus = EventBus::new();
+    event_bus.subscribe_listener(Box::new(ExampleSubscriber::new("Subscriber 1".to_string())));
+    event_bus.subscribe_listener(Box::new(ExampleSubscriber::new("Subscriber 2".to_string())));
 
-    message_queue.publish(Event::new("hello".to_string()));
-    message_queue.publish(Event::new("world".to_string()));
+    event_bus.publish(Event::new("hello".to_string()));
+    event_bus.publish(Event::new("world".to_string()));
 
     // Runs through each event, and calls each listener's on_event method.
-    message_queue.run();
+    event_bus.run();
 }
