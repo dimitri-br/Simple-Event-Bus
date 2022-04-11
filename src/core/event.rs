@@ -36,3 +36,10 @@ impl<T> Event<T> {
         &self.data
     }
 }
+
+
+impl<T> From<T> for Event<T> {
+    fn from(data: T) -> Self {
+        Event::new(data)
+    }
+}
