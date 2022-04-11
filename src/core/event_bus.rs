@@ -29,7 +29,7 @@ pub struct EventBus<T> {
     /// A vec of events that have been published to the event bus.
     events: Vec<Event<T>>,
     /// A vec of all subscribers that are linked to the event bus.
-    subscribers: Vec<Box<dyn Subscriber<Input = T>>>,
+    subscribers: Vec<Box<dyn Subscriber<Input = T>>>
 }
 
 impl<T> EventBus<T> {
@@ -39,7 +39,7 @@ impl<T> EventBus<T> {
     pub fn new() -> EventBus<T> {
         EventBus {
             events: Vec::new(),
-            subscribers: Vec::new(),
+            subscribers: Vec::new()
         }
     }
 
@@ -53,8 +53,8 @@ impl<T> EventBus<T> {
     /// # Subscribe Listener
     /// 
     /// Subscribes a listener to the event bus.
-    pub fn subscribe_listener(&mut self, listener: Box<dyn Subscriber<Input = T>>) {
-        self.subscribers.push(listener);
+    pub fn subscribe_listener<R: Subscriber<Input = T> +'static>(&mut self, listener: R) {
+        self.subscribers.push(Box::new(listener));
     }
 
     /* Upon run, messages will be cleared! */

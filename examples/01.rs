@@ -20,8 +20,8 @@ impl Subscriber for ExampleSubscriber {
 
 fn main() {
     let mut event_bus = EventBus::new();
-    event_bus.subscribe_listener(Box::new(ExampleSubscriber::new("Subscriber 1".to_string())));
-    event_bus.subscribe_listener(Box::new(ExampleSubscriber::new("Subscriber 2".to_string())));
+    event_bus.subscribe_listener(ExampleSubscriber::new("Subscriber 1".to_string()));
+    event_bus.subscribe_listener(ExampleSubscriber::new("Subscriber 2".to_string()));
 
     event_bus.publish(Event::new("hello".to_string()));
     event_bus.publish(Event::new("world".to_string()));
